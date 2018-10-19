@@ -75,12 +75,14 @@ Generating percentile stats for response times of successful responses
 """
 # Create dataframe containing only successful responses
 df_non_error = df_logs[df_logs.LogType != 'ERROR']
+df_non_error['ResponseTime'] = df_non_error['ResponseTime'].apply(
+    pd.to_numeric)
 
-df_non_error_average_response = pd.to_numeric(df_non_error['ResponseTime']).groupby(
-    [df_non_error['Date'], df_non_error['Time'].str.slice(start=0, stop=2)]).mean().reset_index()
+# df_non_error_average_response = pd.to_numeric(df_non_error['ResponseTime']).groupby(
+#     [df_non_error['Date'], df_non_error['Time'].str.slice(start=0, stop=2)]).mean().reset_index()
 
-df_non_error_average_response['Datetime'] = df_non_error_average_response.apply(
-    lambda row: datetime(row), axis=1)
+# df_non_error_average_response['Datetime'] = df_non_error_average_response.apply(
+#     lambda row: datetime(row), axis=1)
 
 # Plot graph for response time for successful requests
 # plt.plot(df_non_error_average_response['Datetime'],
@@ -89,8 +91,10 @@ df_non_error_average_response['Datetime'] = df_non_error_average_response.apply(
 
 print(df_non_error[['LogType', 'ResponseTime']].quantile(0.8))
 
-# df_percentile = pd.DataFrame(columns=['Percentile', 'ResponseTime'])
-# percentile_list = [0.5, 0.9, 0.95]
-# for percentile in percentile_list:
-#     df_percentile.loc[len(df_percentile)] = [str(percentile * 100) + '%',
-#                                              df_non_error[['LogType', 'ResponseTime']].quantile(percentile).tolist()[0]]
+df_percentile = pd.DataFrame(columns=['Percentile', 'ResponseTime'])
+percentile_list = [0.5, 0.9, 0.95]
+for percentile in percentile_list:
+    df_percentile.loc[len(df_percentile)] = [str(percentile * 100) + '%',
+                                             df_non_error[['LogType', 'ResponseTime']].quantile(percentile).tolist()[0]]
+
+print(df_percentile)
