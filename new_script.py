@@ -4,7 +4,7 @@ import os
 from matplotlib import pyplot as plt
 from shutil import copy
 
-file_source = '/tmp/me/out.log'
+file_source = '/usr/me/out.log'
 file_destination = os.getcwd()
 
 # Function generate new column
@@ -65,9 +65,12 @@ df_error_count = pd.DataFrame(series_error_count)
 df_error_count['Datetime'] = df_error_count.apply(
     lambda row: datetime(row), axis=1)
 
+# Print error count per hour
+print(df_error_count)
+
 # Plot graph for error count per hour
-# plt.plot(df_error_count['Datetime'], df_error_count['ErrorCount'])
-# plt.show()
+plt.plot(df_error_count['Datetime'], df_error_count['ErrorCount'])
+plt.show()
 
 
 """
