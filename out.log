@@ -9523,7 +9523,3 @@
 2018-08-30 15:12:30.846066 [PID 4789] [147ms] [UID W2BIU] [ERROR] /accounts Error on line 567 at accounts_handler.py. Logtrace below. Error name: RunTimeError 
     Line 567: Something messed up. Exception raised.
 2018-08-30 15:12:29.846066 [PID 4789] [334ms] [UID WA3KE] [DEBUG] /login Everything looks good
-2018-08-30 15:12:35.846066 [PID 4789] [220ms] [UID WA3KE] [DEBUG] /profile Everything looks good
-2018-08-30 15:12:34.846066 [PID 4790] [227ms] [UID EN7IK] [INFO] /logout Everything looks good
-2018-08-30 15:12:35.846066 [PID 4789] [220ms] [UID WA3KE] [DEBUG] /profile Everything looks good
-2018-08-30 15:12:34.846066 [PID 4790] [227ms] [UID EN7IK] [INFO] /logout Everything looks good

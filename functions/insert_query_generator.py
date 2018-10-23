@@ -6,9 +6,6 @@ def generate_insert_query(table_name, list_of_column_names, list_of_rows):
         list_of_rows_string.append(
             str(row).replace('[', '(').replace(']', ')'))
     rows_string = ',\n'.join(list_of_rows_string)
-    print(list_of_rows)
-    print(list_of_rows_string)
-    print(rows_string)
 
     query = """
     INSERT INTO {} {}
